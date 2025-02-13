@@ -6,7 +6,7 @@ import jakarta.enterprise.context.ApplicationScoped
 import org.apache.kafka.common.header.Headers
 import java.lang.Exception
 
-@Identifier("deserialization-failure-handler")
+@Identifier("deserialization-failure-fallback")
 @ApplicationScoped
 class DeserializationFailureHandler: DeserializationFailureHandler<Any> {
 
