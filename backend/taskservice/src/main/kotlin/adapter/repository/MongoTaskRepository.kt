@@ -41,7 +41,7 @@ class MongoTaskRepository @Inject constructor(
                         .unique(true)
                         .name(INDEX_ID)
                 ).invoke { it -> logger.debug("Created index $it") }
-                    .onFailure().invoke{ ex -> logger.warn("Error creating index {}", INDEX_ID, ex) }
+                    .onFailure().invoke { ex -> logger.warn("Error creating index {}", INDEX_ID, ex) }
                     .onFailure().recoverWithNull()
             }.subscribe().with {
                 logger.debug("Initialized collection $collectionName")

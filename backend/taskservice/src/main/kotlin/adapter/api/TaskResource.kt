@@ -14,7 +14,7 @@ import port.TaskService
 @Consumes(MediaType.APPLICATION_JSON)
 class TaskResource @Inject constructor(
     private val taskService: TaskService
-): TaskResourceService{
+) : TaskResourceService {
 
     @POST
     override fun save(taskDTO: TaskDTO): Uni<TaskDTO> = taskService.save(taskDTO)
@@ -28,7 +28,8 @@ class TaskResource @Inject constructor(
 
     @GET
     @Path("/project/{id}")
-    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> = taskService.findByProjectId(projectId)
+    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> =
+        taskService.findByProjectId(projectId)
 
     @GET
     override fun findAll(): Multi<TaskDTO> = taskService.findAll()

@@ -26,21 +26,21 @@ class TaskServiceImpl @Inject constructor(
             .chain { it -> taskRepository.save(it) }
             .map { taskMapper.toDto(it) }
             .invoke { it -> taskEventService.emitTaskCreated(it) }
-            .invoke{ _ -> logger.info("Task $taskDTO saved")}
+            .invoke { _ -> logger.info("Task $taskDTO saved") }
 
     override fun update(taskDTO: TaskDTO): Uni<TaskDTO> =
         Uni.createFrom().item(taskMapper.toEntity(taskDTO))
-        .invoke { _ -> logger.info("Updating task $taskDTO") }
+            .invoke { _ -> logger.info("Updating task $taskDTO") }
             .chain { it -> taskRepository.update(it) }
             .map { taskMapper.toDto(it) }
             .invoke { it -> taskEventService.emitTaskUpdated(it) }
-            .invoke{ _ -> logger.info("Task $taskDTO updated")}
+            .invoke { _ -> logger.info("Task $taskDTO updated") }
 
     override fun findById(id: String): Uni<TaskDTO?> =
         taskRepository.findById(id)
             .invoke { _ -> logger.info("Finding task with id $id") }
             .onItem().ifNull().failWith(NoSuchElementException("Task with id $id not found"))
-            .map { taskMapper.toDto(it!!)}
+            .map { taskMapper.toDto(it!!) }
 
     override fun findAll(): Multi<TaskDTO> =
         taskRepository.findAll()
@@ -55,8 +55,10 @@ class TaskServiceImpl @Inject constructor(
 
     override fun delete(id: String): Uni<Boolean> =
         Uni.createFrom().item(id)
-            .invoke { _ -> logger.info("Deleting task with id {}", id)}
-            .chain { _ -> taskRepository.delete(id)}
-            .invoke { result -> if (result) logger.info("Task with id {} deleted", id)
-                else logger.warn("Task with id {} not found", id) }
+            .invoke { _ -> logger.info("Deleting task with id {}", id) }
+            .chain { _ -> taskRepository.delete(id) }
+            .invoke { result ->
+                if (result) logger.info("Task with id {} deleted", id)
+                else logger.warn("Task with id {} not found", id)
+            }
 }
