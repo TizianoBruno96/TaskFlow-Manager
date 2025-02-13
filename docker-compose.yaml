@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: zookeeper:3.8.0
+    container_name: zookeeper
+    restart: on-failure
+    ports:
+      - "2181:2181"
+    networks:
+      - kafka-network
+
+  kafka:
+    image: apache/kafka-native:3.9.0
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    restart: on-failure
+    environment:
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on:
+      - zookeeper
+    networks:
+      - kafka-network
+
+networks:
+  kafka-network:
+    driver: bridge
