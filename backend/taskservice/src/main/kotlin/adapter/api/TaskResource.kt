@@ -28,7 +28,7 @@ class TaskResource @Inject constructor(
 
     @GET
     @Path("/project/{id}")
-    override fun findByProjectId(projectId: String): Multi<TaskDTO> = taskService.findByProjectId(projectId)
+    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> = taskService.findByProjectId(projectId)
 
     @DELETE
     override fun delete(id: String): Uni<Boolean> = taskService.delete(id)

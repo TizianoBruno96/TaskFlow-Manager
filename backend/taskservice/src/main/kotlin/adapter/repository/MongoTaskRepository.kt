@@ -17,7 +17,7 @@ import port.TaskRepository
 @ApplicationScoped
 class MongoTaskRepository @Inject constructor(
     mongoClient: ReactiveMongoClient,
-    @ConfigProperty(name = "mongo.collection.tasks") val collectionName: String
+    @ConfigProperty(name = "mongodb.collection.tasks") val collectionName: String
 ) : TaskRepository {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
