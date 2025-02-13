@@ -12,6 +12,9 @@
       <list>
         <option value="$PROJECT_DIR$/backend/BookHaven/pom.xml" />
         <option value="$PROJECT_DIR$/backend/main/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/projectservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/notificationservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/taskservice/pom.xml" />
       </list>
     </option>
   </component>

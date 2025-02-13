@@ -73,14 +73,6 @@ Il frontend è realizzato con React e comunica con il backend tramite API REST. 
 | 9-10      | Sviluppo del frontend con React, integrazione con le API REST. |
 | 11-12     | Testing, ottimizzazione e documentazione del codice. |
 
----
-
-## Risultato Finale
-
-Alla fine dei 3 mesi, l'applicazione sarà completa e funzionante, dimostrando l'uso di tecnologie moderne come Quarkus, Kotlin, Mutiny, Kafka, MongoDB e React. Questo progetto sarà un'ottima aggiunta al tuo curriculum e ti fornirà esperienza pratica con strumenti richiesti nel settore.
-
----
-
 ## Estensioni Future (Opzionali)
 
 - Aggiungere autenticazione e autorizzazione.
@@ -99,23 +91,23 @@ Alla fine dei 3 mesi, l'applicazione sarà completa e funzionante, dimostrando l
 ### Passi per l'Avvio
 
 1. Clona il repository:
+
    ```bash
    git clone https://github.com/tuo-repo/taskflow-manager.git
    cd taskflow-manager
 
 2. Avvia Kafka e MongoDB tramite Docker:
-    bash
-    Copy
+
+    ```bash
     docker-compose up -d
 
 3. Avvia i servizi backend:
-    bash
-    Copy
+
+    ```bash
     ./mvnw quarkus:dev
 
 4. Avvia il frontend:
-    bash
-    Copy
+    ```bash
     cd frontend
     npm install
     npm start
