@@ -19,7 +19,7 @@ class MongoTaskRepository @Inject constructor(
     mongoClient: ReactiveMongoClient,
     @ConfigProperty(name = "mongo.collection.tasks") val collectionName: String
 ) : TaskRepository {
-    
+
     private val logger = LoggerFactory.getLogger(this::class.java)
     private lateinit var collection: ReactiveMongoCollection<Task>
 
@@ -28,11 +28,11 @@ class MongoTaskRepository @Inject constructor(
         private val FIELD_PROJECT_ID = "projectId"
         private const val INDEX_ID = "IndexId"
     }
-    
+
     init {
-        val database = mongoClient.getDatabase("taskflow")
+        val database = mongoClient.getDatabase("myDb")
         collection = database.getCollection(collectionName, Task::class.java)
-        
+
         Uni.createFrom().voidItem()
             .chain { ->
                 collection.createIndex(
@@ -47,7 +47,7 @@ class MongoTaskRepository @Inject constructor(
                 logger.debug("Initialized collection $collectionName")
             }
     }
-    
+
     override fun save(task: Task): Uni<Task> =
         collection.insertOne(task).replaceWith(task)
 
