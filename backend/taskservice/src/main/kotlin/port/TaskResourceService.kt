@@ -9,5 +9,6 @@ interface TaskResourceService {
     fun update(taskDTO: TaskDTO): Uni<TaskDTO>
     fun findById(id: String): Uni<TaskDTO?>
     fun findByProjectId(projectId: String): Multi<TaskDTO>
+    fun findAll(): Multi<TaskDTO>
     fun delete(id: String): Uni<Boolean>
 }

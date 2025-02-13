@@ -14,10 +14,10 @@ import port.TaskService
 @ApplicationScoped
 class TaskServiceImpl @Inject constructor(
     private val taskRepository: TaskRepository,
-    private val taskEventService: TaskEventService
+    private val taskEventService: TaskEventService,
+    private val taskMapper: TaskMapper
 ) : TaskService {
 
-    private val taskMapper = TaskMapper.INSTANCE
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     override fun save(taskDTO: TaskDTO): Uni<TaskDTO> =
@@ -41,6 +41,12 @@ class TaskServiceImpl @Inject constructor(
             .invoke { _ -> logger.info("Finding task with id $id") }
             .onItem().ifNull().failWith(NoSuchElementException("Task with id $id not found"))
             .map { taskMapper.toDto(it!!)}
+
+    override fun findAll(): Multi<TaskDTO> =
+        taskRepository.findAll()
+            .invoke { _ -> logger.info("Finding all tasks") }
+            .map { taskMapper.toDto(it) }
+
 
     override fun findByProjectId(projectId: String): Multi<TaskDTO> =
         taskRepository.findByProjectId(projectId)

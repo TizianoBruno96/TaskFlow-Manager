@@ -60,6 +60,9 @@ class MongoTaskRepository @Inject constructor(
     override fun findByProjectId(projectId: String): Multi<Task> =
         collection.find(eq(FIELD_PROJECT_ID, projectId))
 
+    override fun findAll(): Multi<Task> =
+        collection.find()
+
     override fun delete(id: String): Uni<Boolean> =
         collection.deleteOne(eq(FIELD_ID, id)).map { it.deletedCount > 0 }
 }

@@ -9,5 +9,6 @@ interface TaskRepository {
     fun update(task: Task): Uni<Task>
     fun findById(id: String): Uni<Task?>
     fun findByProjectId(projectId: String): Multi<Task>
+    fun findAll(): Multi<Task>
     fun delete(id: String): Uni<Boolean>
 }

@@ -1,15 +1,24 @@
 package core.entity
 
+import org.bson.codecs.pojo.annotations.BsonCreator
+import org.bson.codecs.pojo.annotations.BsonId
+import org.bson.codecs.pojo.annotations.BsonProperty
 import org.bson.types.ObjectId
 import java.util.*
 
-data class Task(
-    val id: String,
-    val title: String,
-    val description: String,
-    val status: String,
-    val assignedTo: String,
-    val projectId: ObjectId,
-    val createdAt: Date = Date(),
-    val updatedAt: Date = Date()
-)
+data class Task @BsonCreator constructor(
+    @BsonId var id: ObjectId? = ObjectId(),
+    @BsonProperty("title") var title: String? = null,
+    @BsonProperty("description") var description: String? = null,
+    @BsonProperty("status") var status: String? = null,
+    @BsonProperty("assignedTo") var assignedTo: String? = null,
+    @BsonProperty("projectId") var projectId: ObjectId? = null,
+    @BsonProperty("createdAt") var createdAt: Date = Date(),
+    @BsonProperty("updatedAt") var updatedAt: Date = Date()
+) {
+    init {
+        if (id == null) {
+            id = ObjectId()
+        }
+    }
+}
