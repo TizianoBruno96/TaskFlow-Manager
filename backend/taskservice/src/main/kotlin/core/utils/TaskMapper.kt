@@ -3,7 +3,6 @@ package core.utils
 import core.dto.TaskDTO
 import core.entity.Task
 import jakarta.inject.Singleton
-import org.bson.types.ObjectId
 
 @Singleton
 class TaskMapper {
@@ -19,7 +18,6 @@ class TaskMapper {
 
 
     fun toEntity(taskDTO: TaskDTO): Task = Task(
-        id = ObjectId(),
         title = taskDTO.title,
         description = taskDTO.description,
         status = taskDTO.status,

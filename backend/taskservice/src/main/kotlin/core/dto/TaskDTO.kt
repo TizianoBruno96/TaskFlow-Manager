@@ -2,7 +2,6 @@ package core.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY
-import org.bson.types.ObjectId
 import java.util.*
 
 data class TaskDTO(
@@ -10,7 +9,7 @@ data class TaskDTO(
     val description: String?,
     val status: String?,
     val assignedTo: String?,
-    val projectId: ObjectId?,
+    val projectId: String?,
     @JsonProperty(access = READ_ONLY) val createdAt: Date? = Date(),
     @JsonProperty(access = READ_ONLY) val updatedAt: Date? = Date()
 )
