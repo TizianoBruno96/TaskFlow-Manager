@@ -15,55 +15,55 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  notificationservice:
-    image: notificationservice:latest
-    container_name: notificationservice
-    restart: unless-stopped
-    build:
-      context: ./backend/notificationservice
-      dockerfile: src/main/docker/Dockerfile.jvm
-    ports:
-      - "8082:8082"
-    environment:
-      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
-    depends_on:
-      - kafka
-      - mongodb
-      - projectservice
-      - taskservice
-
-  projectservice:
-    image: projectservice:latest
-    container_name: projectservice
-    restart: unless-stopped
-    build:
-      context: ./backend/projectservice
-      dockerfile: src/main/docker/Dockerfile.jvm
-    ports:
-      - "8081:8081"
-    environment:
-      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
-    depends_on:
-      - kafka
-      - mongodb
-
-  taskservice:
-    image: taskservice:latest
-    container_name: taskservice
-    restart: unless-stopped
-    build:
-      context: ./backend/taskservice
-      dockerfile: src/main/docker/Dockerfile.jvm
-    ports:
-      - "8080:8080"
-    environment:
-      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
-    depends_on:
-      - kafka
-      - mongodb
+#  notificationservice:
+#    image: notificationservice:latest
+#    container_name: notificationservice
+#    restart: unless-stopped
+#    build:
+#      context: ./backend/notificationservice
+#      dockerfile: src/main/docker/Dockerfile.jvm
+#    ports:
+#      - "8082:8082"
+#    environment:
+#      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+#      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
+#    depends_on:
+#      - kafka
+#      - mongodb
+#      - projectservice
+#      - taskservice
+#
+#  projectservice:
+#    image: projectservice:latest
+#    container_name: projectservice
+#    restart: unless-stopped
+#    build:
+#      context: ./backend/projectservice
+#      dockerfile: src/main/docker/Dockerfile.jvm
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+#      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
+#    depends_on:
+#      - kafka
+#      - mongodb
+#
+#  taskservice:
+#    image: taskservice:latest
+#    container_name: taskservice
+#    restart: unless-stopped
+#    build:
+#      context: ./backend/taskservice
+#      dockerfile: src/main/docker/Dockerfile.jvm
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+#      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
+#    depends_on:
+#      - kafka
+#      - mongodb
 
 volumes:
   mongodb_data:
