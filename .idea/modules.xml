@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TaskFlow-Manager.iml" filepath="$PROJECT_DIR$/.idea/TaskFlow-Manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/notificationservice/notificationservice.iml" filepath="$PROJECT_DIR$/backend/notificationservice/notificationservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/BookHaven/projectservice.iml" filepath="$PROJECT_DIR$/backend/BookHaven/projectservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/taskservice/taskservice.iml" filepath="$PROJECT_DIR$/backend/taskservice/taskservice.iml" />
     </modules>
   </component>
 </project>

@@ -2,11 +2,9 @@ services:
   kafka:
     image: apache/kafka-native:3.9.0
     container_name: kafka
+    restart: unless-stopped
     ports:
       - "9092:9092"
-    restart: unless-stopped
-    networks:
-      - kafka-network
 
   mongodb:
     image: mongo:latest
@@ -16,12 +14,51 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
-    networks:
-      - kafka-network
+
+  notificationservice:
+    image: notificationservice:latest
+    container_name: notificationservice
+    build:
+      context: ./backend/notificationservice
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8082:8082"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
+    depends_on:
+      - kafka
+      - mongodb
+
+  projectservice:
+    image: projectservice:latest
+    container_name: projectservice
+    build:
+      context: ./backend/projectservice
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8081:8081"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
+    depends_on:
+      - kafka
+      - mongodb
+
+  taskservice:
+    image: taskservice:latest
+    container_name: taskservice
+    build:
+      context: ./backend/taskservice
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      QUARKUS_MONGODB_CONNECTION_STRING: mongodb://mongodb:27017
+    depends_on:
+      - kafka
+      - mongodb
 
 volumes:
   mongodb_data:
-
-networks:
-  kafka-network:
-    driver: bridge
