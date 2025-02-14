@@ -1,5 +1,6 @@
 package adapter.websocket
 
+import core.dto.ProjectDTO
 import core.dto.TaskDTO
 import io.vertx.core.impl.logging.LoggerFactory
 import jakarta.enterprise.context.ApplicationScoped
@@ -12,6 +13,13 @@ class NotificationServiceImpl: NotificationService {
     override fun sendTaskNotification(task: TaskDTO, eventType: String) {
         //TODO Nella versione attuale, solo log per test
         logger.info("Sending notification: EventType=$eventType, Task=$task")
+
+        //TODO Futuro: invio notifiche al frontend con WebSocket o altri sistemi
+    }
+
+    override fun sendProjectNotification(project: ProjectDTO, eventType: String) {
+        //TODO Nella versione attuale, solo log per test
+        logger.info("Sending notification: EventType=$eventType, Project=$project")
 
         //TODO Futuro: invio notifiche al frontend con WebSocket o altri sistemi
     }

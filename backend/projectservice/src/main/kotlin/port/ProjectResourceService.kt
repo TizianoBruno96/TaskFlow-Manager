@@ -1,13 +1,13 @@
 package port
 
-import core.dto.ProjectDto
+import core.dto.ProjectDTO
 import io.smallrye.mutiny.Multi
 import io.smallrye.mutiny.Uni
 
 interface ProjectResourceService {
-    fun save(projectDto: ProjectDto): Uni<ProjectDto>
-    fun update(projectDto: ProjectDto): Uni<ProjectDto>
-    fun findById(id: String): Uni<ProjectDto?>
-    fun findAll(): Multi<ProjectDto>
+    fun save(projectDto: ProjectDTO): Uni<ProjectDTO>
+    fun update(projectDto: ProjectDTO): Uni<ProjectDTO>
+    fun findById(id: String): Uni<ProjectDTO?>
+    fun findAll(): Multi<ProjectDTO>
     fun delete(id: String): Uni<Boolean>
 }

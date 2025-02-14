@@ -3,6 +3,7 @@ package adapter.api
 import core.dto.TaskDTO
 import io.smallrye.mutiny.Multi
 import io.smallrye.mutiny.Uni
+import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
@@ -12,6 +13,7 @@ import port.TaskService
 @Path("/tasks")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@ApplicationScoped
 class TaskResource @Inject constructor(
     private val taskService: TaskService
 ) : TaskResourceService {
@@ -28,8 +30,7 @@ class TaskResource @Inject constructor(
 
     @GET
     @Path("/project/{id}")
-    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> =
-        taskService.findByProjectId(projectId)
+    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> = taskService.findByProjectId(projectId)
 
     @GET
     override fun findAll(): Multi<TaskDTO> = taskService.findAll()

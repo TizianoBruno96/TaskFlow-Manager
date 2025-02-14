@@ -1,13 +1,13 @@
 package core.utils
 
-import core.dto.ProjectDto
+import core.dto.ProjectDTO
 import core.entity.Project
 import jakarta.inject.Singleton
 import org.bson.types.ObjectId
 
 @Singleton
 class ProjectMapper {
-    fun toDto(project: Project) = ProjectDto(
+    fun toDto(project: Project) = ProjectDTO(
         name = project.name,
         description = project.description,
         participants = project.participants,
@@ -16,7 +16,7 @@ class ProjectMapper {
         updatedAt = project.updatedAt
     )
 
-    fun toEntity(projectDto: ProjectDto) = Project(
+    fun toEntity(projectDto: ProjectDTO) = Project(
         id = ObjectId(),
         name = projectDto.name,
         description = projectDto.description,

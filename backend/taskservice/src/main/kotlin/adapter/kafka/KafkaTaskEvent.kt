@@ -12,7 +12,7 @@ import port.TaskEventService
 @ApplicationScoped
 class KafkaTaskEvent @Inject constructor(
     @Channel("task-created") private val taskCreatedEmitter: Emitter<TaskDTO>,
-    @Channel("task-updated") val taskUpdatedEmitter: Emitter<TaskDTO>
+    @Channel("task-updated") private val taskUpdatedEmitter: Emitter<TaskDTO>
 ) : TaskEventService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
