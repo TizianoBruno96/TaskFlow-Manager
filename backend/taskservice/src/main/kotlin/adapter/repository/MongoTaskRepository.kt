@@ -24,7 +24,7 @@ class MongoTaskRepository @Inject constructor(
     private lateinit var collection: ReactiveMongoCollection<Task>
 
     companion object {
-        private val FIELD_ID = "_id"
+        private val FIELD_ID = Task::id.name
         private val FIELD_PROJECT_ID = "projectId"
         private const val INDEX_ID = "IndexId"
     }
