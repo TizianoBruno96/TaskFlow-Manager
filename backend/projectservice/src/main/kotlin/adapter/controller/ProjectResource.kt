@@ -11,7 +11,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody
 import port.ProjectResourceService
 import port.ProjectService
 
-@Path("/tasks")
+@Path("/projects")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @ApplicationScoped
