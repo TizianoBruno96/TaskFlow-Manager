@@ -1,4 +1,4 @@
-package adapter.controller
+package adapter.api
 
 import core.dto.ProjectDTO
 import io.smallrye.mutiny.Multi

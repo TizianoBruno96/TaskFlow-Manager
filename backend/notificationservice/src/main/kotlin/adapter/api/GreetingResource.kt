@@ -1,4 +1,4 @@
-package org.acme
+package adapter.api
 
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.Path
@@ -10,5 +10,5 @@ class GreetingResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    fun hello() = "Hello from Quarkus REST"
+    fun hello() = "Hello from Quarkus NotificationService REST endpoint"
 }
