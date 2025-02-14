@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory
 import port.TaskEventService
 import port.TaskRepository
 import port.TaskService
+import java.util.Date
 
 @ApplicationScoped
 class TaskServiceImpl @Inject constructor(
@@ -23,6 +24,7 @@ class TaskServiceImpl @Inject constructor(
     override fun save(taskDTO: TaskDTO): Uni<TaskDTO> =
         Uni.createFrom().item(taskMapper.toEntity(taskDTO))
             .invoke { _ -> logger.info("Saving task $taskDTO") }
+            .map { it.copy(createdAt = Date(), updatedAt = Date()) }
             .chain { it -> taskRepository.save(it) }
             .map { taskMapper.toDto(it) }
             .invoke { it -> taskEventService.emitTaskCreated(it) }
@@ -31,6 +33,7 @@ class TaskServiceImpl @Inject constructor(
     override fun update(taskDTO: TaskDTO): Uni<TaskDTO> =
         Uni.createFrom().item(taskMapper.toEntity(taskDTO))
             .invoke { _ -> logger.info("Updating task $taskDTO") }
+            .map { it.copy(updatedAt = Date()) }
             .chain { it -> taskRepository.update(it) }
             .map { taskMapper.toDto(it) }
             .invoke { it -> taskEventService.emitTaskUpdated(it) }
