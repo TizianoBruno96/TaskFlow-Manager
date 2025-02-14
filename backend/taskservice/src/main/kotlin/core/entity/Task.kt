@@ -5,7 +5,7 @@ import org.bson.codecs.pojo.annotations.BsonProperty
 import org.bson.types.ObjectId
 import java.util.*
 
-data class Task (
+data class Task(
     @BsonId var id: ObjectId? = ObjectId(),
     @BsonProperty("title") var title: String? = null,
     @BsonProperty("description") var description: String? = null,

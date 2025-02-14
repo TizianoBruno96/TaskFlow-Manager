@@ -2,7 +2,7 @@ package core.dto
 
 import java.util.*
 
-data class ProjectDTO (
+data class ProjectDTO(
     val name: String?,
     var description: String?,
     var participants: List<String>?,

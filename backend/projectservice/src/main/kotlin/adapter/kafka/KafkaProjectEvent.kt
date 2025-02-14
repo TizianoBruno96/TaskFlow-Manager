@@ -12,7 +12,7 @@ import port.ProjectEventService
 class KafkaProjectEvent @Inject constructor(
     @Channel("project-created") private val projectCreatedEmitter: Emitter<ProjectDTO>,
     @Channel("project-updated") private val projectUpdatedEmitter: Emitter<ProjectDTO>
-): ProjectEventService {
+) : ProjectEventService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 

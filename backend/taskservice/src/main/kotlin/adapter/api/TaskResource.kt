@@ -30,7 +30,8 @@ class TaskResource @Inject constructor(
 
     @GET
     @Path("/project/{id}")
-    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> = taskService.findByProjectId(projectId)
+    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> =
+        taskService.findByProjectId(projectId)
 
     @GET
     override fun findAll(): Multi<TaskDTO> = taskService.findAll()

@@ -17,7 +17,7 @@ import port.ProjectService
 @ApplicationScoped
 class ProjectResource @Inject constructor(
     private val projectService: ProjectService
-): ProjectResourceService {
+) : ProjectResourceService {
 
     @POST
     override fun save(@RequestBody projectDto: ProjectDTO): Uni<ProjectDTO> = projectService.save(projectDto)

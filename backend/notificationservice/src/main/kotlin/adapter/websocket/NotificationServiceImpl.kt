@@ -7,7 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped
 import port.NotificationService
 
 @ApplicationScoped
-class NotificationServiceImpl: NotificationService {
+class NotificationServiceImpl : NotificationService {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     override fun sendTaskNotification(task: TaskDTO, eventType: String) {

@@ -14,7 +14,7 @@ import java.util.concurrent.CompletionStage
 @ApplicationScoped
 class KafkaTaskEvent @Inject constructor(
     private val notificationServiceImpl: NotificationServiceImpl
-): KafkaTaskEventService {
+) : KafkaTaskEventService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 

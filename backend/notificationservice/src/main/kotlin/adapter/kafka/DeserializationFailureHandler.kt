@@ -4,11 +4,10 @@ import io.smallrye.common.annotation.Identifier
 import io.smallrye.reactive.messaging.kafka.DeserializationFailureHandler
 import jakarta.enterprise.context.ApplicationScoped
 import org.apache.kafka.common.header.Headers
-import java.lang.Exception
 
 @Identifier("deserialization-failure-fallback")
 @ApplicationScoped
-class DeserializationFailureHandler: DeserializationFailureHandler<Any> {
+class DeserializationFailureHandler : DeserializationFailureHandler<Any> {
 
     private val logger = org.slf4j.LoggerFactory.getLogger(this::class.java)
 

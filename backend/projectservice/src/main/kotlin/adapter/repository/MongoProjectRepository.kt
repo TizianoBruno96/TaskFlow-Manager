@@ -18,7 +18,7 @@ import port.ProjectRepository
 class MongoProjectRepository @Inject constructor(
     mongoClient: ReactiveMongoClient,
     @ConfigProperty(name = "mongodb.collection.projects") val collectionName: String
-): ProjectRepository {
+) : ProjectRepository {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
     private lateinit var collection: ReactiveMongoCollection<Project>

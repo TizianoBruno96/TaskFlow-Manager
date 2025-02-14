@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory
 import port.ProjectEventService
 import port.ProjectRepository
 import port.ProjectService
-import java.util.Date
+import java.util.*
 
 @ApplicationScoped
 class ProjectServiceImpl @Inject constructor(
@@ -28,7 +28,7 @@ class ProjectServiceImpl @Inject constructor(
             .chain { it -> projectRepository.save(it) }
             .map { mapper.toDto(it) }
             .invoke { it -> projectEventService.emitProjectCreated(it) }
-            .invoke { it -> logger.info("Object $it saved")}
+            .invoke { it -> logger.info("Object $it saved") }
 
     override fun update(projectDto: ProjectDTO): Uni<ProjectDTO> =
         Uni.createFrom().item(mapper.toEntity(projectDto))
@@ -37,7 +37,7 @@ class ProjectServiceImpl @Inject constructor(
             .chain { it -> projectRepository.update(it) }
             .map { mapper.toDto(it) }
             .invoke { it -> projectEventService.emitProjectUpdated(it) }
-            .invoke { it -> logger.info("Object $it updated")}
+            .invoke { it -> logger.info("Object $it updated") }
 
     override fun findById(id: String): Uni<ProjectDTO?> =
         projectRepository.findById(id)
