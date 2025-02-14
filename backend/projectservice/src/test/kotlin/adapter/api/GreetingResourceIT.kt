@@ -1,4 +1,4 @@
-package org.acme
+package adapter.api
 
 import io.quarkus.test.junit.QuarkusIntegrationTest
 

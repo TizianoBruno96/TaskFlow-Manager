@@ -30,6 +30,8 @@ services:
     depends_on:
       - kafka
       - mongodb
+      - projectservice
+      - taskservice
 
   projectservice:
     image: projectservice:latest
