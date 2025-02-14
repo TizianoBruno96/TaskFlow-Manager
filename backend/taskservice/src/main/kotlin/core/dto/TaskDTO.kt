@@ -9,6 +9,6 @@ data class TaskDTO(
     val status: String?,
     val assignedTo: String?,
     val projectId: ObjectId?,
-    val createdAt: Date = Date(),
-    val updatedAt: Date = Date()
+    val createdAt: Date? = Date(),
+    val updatedAt: Date? = Date()
 )
