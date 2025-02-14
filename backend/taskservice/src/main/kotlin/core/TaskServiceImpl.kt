@@ -26,18 +26,18 @@ class TaskServiceImpl @Inject constructor(
             .invoke { _ -> logger.info("Saving task $taskDTO") }
             .map { it.copy(createdAt = Date(), updatedAt = Date()) }
             .chain { it -> taskRepository.save(it) }
+            .invoke { it -> logger.info("Task $it saved") }
             .map { taskMapper.toDto(it) }
             .invoke { it -> taskEventService.emitTaskCreated(it) }
-            .invoke { _ -> logger.info("Task $taskDTO saved") }
 
     override fun update(taskDTO: TaskDTO): Uni<TaskDTO> =
         Uni.createFrom().item(taskMapper.toEntity(taskDTO))
             .invoke { _ -> logger.info("Updating task $taskDTO") }
             .map { it.copy(updatedAt = Date()) }
             .chain { it -> taskRepository.update(it) }
+            .invoke { it -> logger.info("Task $it updated") }
             .map { taskMapper.toDto(it) }
             .invoke { it -> taskEventService.emitTaskUpdated(it) }
-            .invoke { _ -> logger.info("Task $taskDTO updated") }
 
     override fun findById(id: String): Uni<TaskDTO?> =
         taskRepository.findById(id)

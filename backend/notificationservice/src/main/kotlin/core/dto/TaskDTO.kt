@@ -1,6 +1,5 @@
 package core.dto
 
-import org.bson.types.ObjectId
 import java.util.*
 
 data class TaskDTO(
