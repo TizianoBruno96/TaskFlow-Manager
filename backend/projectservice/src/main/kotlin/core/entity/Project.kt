@@ -1,13 +1,22 @@
 package core.entity
 
+import org.bson.codecs.pojo.annotations.BsonId
+import org.bson.codecs.pojo.annotations.BsonProperty
 import org.bson.types.ObjectId
 import java.util.*
 
 data class Project(
-    val name: String? = null,
-    val description: String? = null,
-    val createdBy: String? = null,
-    val tasks: MutableList<ObjectId> = mutableListOf(),
-    val createdAt: Date = Date(),
-    val updatedAt: Date = Date(),
-)
+    @BsonId var id: ObjectId? = ObjectId(),
+    @BsonProperty("name") var name: String? = null,
+    @BsonProperty("description") var description: String? = null,
+    @BsonProperty("participants") var participants: List<String>? = emptyList(),
+    @BsonProperty("createdBy") var createdBy: String? = null,
+    @BsonProperty("createdAt") var createdAt: Date? = Date(),
+    @BsonProperty("updatedAt") var updatedAt: Date? = Date(),
+) {
+    init {
+        if (id == null) {
+            id = ObjectId()
+        }
+    }
+}
