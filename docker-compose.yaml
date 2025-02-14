@@ -18,6 +18,7 @@ services:
   notificationservice:
     image: notificationservice:latest
     container_name: notificationservice
+    restart: unless-stopped
     build:
       context: ./backend/notificationservice
       dockerfile: src/main/docker/Dockerfile.jvm
@@ -33,6 +34,7 @@ services:
   projectservice:
     image: projectservice:latest
     container_name: projectservice
+    restart: unless-stopped
     build:
       context: ./backend/projectservice
       dockerfile: src/main/docker/Dockerfile.jvm
@@ -48,6 +50,7 @@ services:
   taskservice:
     image: taskservice:latest
     container_name: taskservice
+    restart: unless-stopped
     build:
       context: ./backend/taskservice
       dockerfile: src/main/docker/Dockerfile.jvm
