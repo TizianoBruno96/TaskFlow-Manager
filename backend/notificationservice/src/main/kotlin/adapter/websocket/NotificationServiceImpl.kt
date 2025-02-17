@@ -23,5 +23,4 @@ class NotificationServiceImpl : NotificationService {
 
         //TODO Futuro: invio notifiche al frontend con WebSocket o altri sistemi
     }
-
 }

@@ -1,12 +1,14 @@
 package adapter.api
 
 import core.dto.TaskDTO
+import core.entity.Task
 import io.smallrye.mutiny.Multi
 import io.smallrye.mutiny.Uni
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
+import org.bson.types.ObjectId
 import port.TaskResourceService
 import port.TaskService
 
@@ -19,7 +21,7 @@ class TaskResource @Inject constructor(
 ) : TaskResourceService {
 
     @POST
-    override fun save(taskDTO: TaskDTO): Uni<TaskDTO> = taskService.save(taskDTO)
+    override fun save(task: Task): Uni<Task> = taskService.save(task)
 
     @PUT
     override fun update(taskDTO: TaskDTO): Uni<TaskDTO> = taskService.update(taskDTO)

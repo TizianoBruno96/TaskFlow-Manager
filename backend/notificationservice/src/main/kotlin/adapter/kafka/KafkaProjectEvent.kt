@@ -1,4 +1,4 @@
-package adapter
+package adapter.kafka
 
 import adapter.websocket.NotificationServiceImpl
 import core.dto.ProjectDTO
