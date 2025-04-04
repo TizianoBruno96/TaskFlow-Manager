@@ -28,3 +28,8 @@ replay_pid*
 /backend/src/main/resources/secrets.yaml
 
 .env
+
+# secrets
+/backend/notificationservice/src/main/resources/datasource.properties
+/backend/projectservice/src/main/resources/datasource.properties
+/backend/taskservice/src/main/resources/datasource.properties
