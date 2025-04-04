@@ -10,6 +10,7 @@ import io.smallrye.mutiny.Multi
 import io.smallrye.mutiny.Uni
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
+import org.bson.types.ObjectId
 import org.eclipse.microprofile.config.inject.ConfigProperty
 import org.slf4j.LoggerFactory
 import port.ProjectRepository
@@ -53,12 +54,12 @@ class MongoProjectRepository @Inject constructor(
     override fun update(project: Project): Uni<Project> =
         collection.replaceOne(eq(FIELD_ID, project.id), project).replaceWith(project)
 
-    override fun findById(id: String): Uni<Project?> =
+    override fun findById(id: ObjectId): Uni<Project?> =
         collection.find(eq(FIELD_ID, id)).toUni()
 
     override fun findAll(): Multi<Project> =
         collection.find()
 
-    override fun delete(id: String): Uni<Boolean> =
+    override fun delete(id: ObjectId): Uni<Boolean> =
         collection.deleteOne(eq(FIELD_ID, id)).map { it.deletedCount > 0 }
 }

@@ -14,4 +14,6 @@ data class Task(
     @BsonProperty("projectId") var projectId: String? = null,
     @BsonProperty("createdAt") var createdAt: Date? = Date(),
     @BsonProperty("updatedAt") var updatedAt: Date? = Date()
-)
+) {
+    fun getIdAsString(): String = id?.toHexString() ?: ""
+}

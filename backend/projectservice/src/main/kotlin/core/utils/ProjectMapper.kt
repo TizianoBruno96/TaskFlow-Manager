@@ -3,6 +3,7 @@ package core.utils
 import core.dto.ProjectDTO
 import core.entity.Project
 import jakarta.inject.Singleton
+import org.bson.types.ObjectId
 
 @Singleton
 class ProjectMapper {

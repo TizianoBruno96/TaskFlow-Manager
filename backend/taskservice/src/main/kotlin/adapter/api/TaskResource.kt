@@ -28,16 +28,16 @@ class TaskResource @Inject constructor(
 
     @GET
     @Path("{id}")
-    override fun findById(@PathParam("id") id: String): Uni<TaskDTO?> = taskService.findById(id)
+    override fun findById(@PathParam("id") id: ObjectId): Uni<TaskDTO?> = taskService.findById(id)
 
     @GET
     @Path("/project/{id}")
-    override fun findByProjectId(@PathParam("id") projectId: String): Multi<TaskDTO> =
+    override fun findByProjectId(@PathParam("id") projectId: ObjectId): Multi<TaskDTO> =
         taskService.findByProjectId(projectId)
 
     @GET
     override fun findAll(): Multi<TaskDTO> = taskService.findAll()
 
     @DELETE
-    override fun delete(id: String): Uni<Boolean> = taskService.delete(id)
+    override fun delete(id: ObjectId): Uni<Boolean> = taskService.delete(id)
 }

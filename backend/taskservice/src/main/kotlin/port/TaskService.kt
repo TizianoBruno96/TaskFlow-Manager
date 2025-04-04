@@ -9,8 +9,8 @@ import org.bson.types.ObjectId
 interface TaskService {
     fun save(task: Task): Uni<Task>
     fun update(taskDTO: TaskDTO): Uni<TaskDTO>
-    fun findById(id: String): Uni<TaskDTO?>
-    fun findByProjectId(projectId: String): Multi<TaskDTO>
+    fun findById(id: ObjectId): Uni<TaskDTO?>
+    fun findByProjectId(projectId: ObjectId): Multi<TaskDTO>
     fun findAll(): Multi<TaskDTO>
-    fun delete(id: String): Uni<Boolean>
+    fun delete(id: ObjectId): Uni<Boolean>
 }

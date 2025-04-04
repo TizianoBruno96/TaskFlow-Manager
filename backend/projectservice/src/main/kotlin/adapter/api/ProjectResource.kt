@@ -7,6 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
+import org.bson.types.ObjectId
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody
 import port.ProjectResourceService
 import port.ProjectService
@@ -27,12 +28,12 @@ class ProjectResource @Inject constructor(
 
     @GET
     @Path("{id}")
-    override fun findById(@PathParam("id") id: String): Uni<ProjectDTO?> = projectService.findById(id)
+    override fun findById(@PathParam("id") id: ObjectId): Uni<ProjectDTO?> = projectService.findById(id)
 
     @GET
     override fun findAll(): Multi<ProjectDTO> = projectService.findAll()
 
     @DELETE
     @Path("{id}")
-    override fun delete(@PathParam("id") id: String): Uni<Boolean> = projectService.delete(id)
+    override fun delete(@PathParam("id") id: ObjectId): Uni<Boolean> = projectService.delete(id)
 }

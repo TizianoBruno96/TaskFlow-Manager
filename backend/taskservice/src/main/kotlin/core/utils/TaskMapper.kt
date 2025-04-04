@@ -17,7 +17,6 @@ class TaskMapper {
 
 
     fun toEntity(taskDTO: TaskDTO): Task = Task(
-        id = ObjectId(),
         title = taskDTO.title,
         description = taskDTO.description,
         status = taskDTO.status,
